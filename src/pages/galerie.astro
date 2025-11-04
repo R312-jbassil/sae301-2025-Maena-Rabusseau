@@ -1,0 +1,47 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Card from "../components/Card.astro";
+const title = "Galerie";
+---
+
+<Layout title={title}>
+    <Header/>
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <div class="flex items-center justify-between mb-8">
+      <div>
+        <h1 class="text-4xl sm:text-5xl md:text-5xl font-bold">GALERIE</h1>
+        <div class="mt-2 text-sm text-neutral-500 tracking-wider">3 créations</div>
+      </div>
+
+      <div>
+        <a href="/personnaliser" class="inline-block bg-(--color-accent) text-white px-4 py-2 rounded-md text-sm hover:brightness-95">CRÉER UNE NOUVELLE PAIRE</a>
+      </div>
+    </div>
+
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-10 justify-items-center">
+      <Card />
+
+      <Card 
+        title="DESIGN INTEMPOREL" 
+        price="129€" 
+        isLimitedStock={false}
+        isBestseller={false}
+        isNEW={true}
+        description="Une monture ronde classique qui transcende les tendances. L'équilibre parfait entre élégance et fonctionnalité."
+      />
+
+      <Card 
+        title="RAFFINEMENT DISCRET" 
+        price="120€" 
+        isLimitedStock={false}
+        isBestseller={false}
+        isNEW={false}
+        isTendance={true}
+        description="Une monture délicate qui sublime tous les visages. Le chic à la française dans sa plus pure expression."
+      />
+    </div>
+
+  </main>
+</Layout>

@@ -6,8 +6,12 @@ import Lunettefemme from "../assets/lunettefemme.avif";
 import Imglunette from "../assets/imglunette.avif";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+const title = "Accueil";
+
 ---
-<Layout>
+
+<Layout title={title}>
+	<Header />
 	<main>
 		<!-- Hero  -->
 		<section

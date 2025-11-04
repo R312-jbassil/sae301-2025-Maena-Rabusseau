@@ -1,0 +1,92 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Lunettehomme from "../assets/lunettehomme.avif";
+const title = "Créer un compte";
+---
+
+<Layout title={title}>
+    <main class="min-h-screen flex items-center justify-center bg-white">
+        <div class="w-full max-w-6xl mx-auto h-screen">
+            <div class="bg-white shadow-md rounded-lg overflow-hidden grid grid-cols-1 md:grid-cols-2 h-full">
+                <div class="hidden md:block h-full">
+                    <div class="h-full w-full">
+                        <img src={Lunettehomme.src} alt="visuel" class="w-full h-full object-cover" />
+                    </div>
+                </div>
+
+                <div class="p-8 md:p-12 flex items-center justify-center h-full">
+                    <div class="w-full max-w-lg">
+                        <a href="/" class="text-sm text-neutral-500 hover:underline">← Retour</a>
+                        <h1 class="mt-6 text-2xl md:text-3xl font-bold text-neutral-900">CRÉER UN COMPTE</h1>
+                        <p class="mt-2 text-sm text-neutral-500">Rejoignez l'expérience TaVue et personnalisez vos lunettes</p>
+
+                        <form class="mt-8 space-y-6" action="#" method="POST">
+
+                                  <div>
+                                <label for="name" class="block text-sm font-medium text-neutral-600">NOM COMPLET</label>
+                                <div class="mt-2">
+                                    <input id="name" name="name" type="text" required placeholder="Jean Dupont" class="block w-full rounded border border-neutral-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-(--color-accent)" />
+                                </div>
+                            </div>
+
+
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-neutral-600">E-MAIL</label>
+                                <div class="mt-2">
+                                    <input id="email" name="email" type="email" required placeholder="vous@exemple.com" class="block w-full rounded border border-neutral-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-(--color-accent)" />
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="password" class="block text-sm font-medium text-neutral-600">MOT DE PASSE</label>
+                                <div class="mt-2">
+                                    <input id="password" name="password" type="password" required placeholder="••••••••" class="block w-full rounded border border-neutral-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-(--color-accent)" />
+                                </div>
+                            </div>
+
+
+                               <div>
+                                <label for="password" class="block text-sm font-medium text-neutral-600">CONFIRMER LE MOT DE PASSE</label>
+                                <div class="mt-2">
+                                    <input id="password" name="password" type="password" required placeholder="••••••••" class="block w-full rounded border border-neutral-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-(--color-accent)" />
+                                </div>
+                            </div>
+
+
+
+                            <div class="flex items-center justify-between">
+                                <label class="inline-flex items-center text-sm text-neutral-600">
+                                    <input type="checkbox" class="h-4 w-4 text-(--color-accent) border-neutral-300 rounded" />
+                                    <span class="ml-2">Se souvenir de moi</span>
+                                </label>
+                            </div>
+
+                            <div>
+                                <button type="submit" class="w-full inline-flex justify-center rounded bg-(--color-accent) px-4 py-2 text-white font-medium hover:brightness-95">CRÉER MON COMPTE</button>
+                            </div>
+                        </form>
+
+                        <p class="mt-6 text-xs text-neutral-400">En créant un compte, vous acceptez nos conditions d'utilisation et notre politique de confidentialité.</p>
+
+                        <div class="mt-4 text-center text-sm text-neutral-500">
+                            Déjà un compte ? <a href="/login" class="text-(--color-accent) font-medium hover:underline">Se connecter</a>
+                        </div>
+
+                        <div class="mt-8 flex items-center gap-4">
+                            <div class="flex-1 h-px bg-neutral-200"></div>
+                            <div class="text-xs uppercase text-neutral-400 tracking-widest">ou continuer avec</div>
+                            <div class="flex-1 h-px bg-neutral-200"></div>
+                        </div>
+
+                        <div class="mt-6 flex justify-center">
+                            <button type="button" class="inline-flex items-center gap-3 border rounded px-6 py-2 text-sm bg-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.4 0 6.1 1.4 8 2.6l6-6C35 3 30.9 1.5 24 1.5 14.7 1.5 6.9 6.9 3 14.5l7 5.4C11.8 16.2 17.2 9.5 24 9.5z"/><path fill="#34A853" d="M46.5 24c0-1.6-.1-3.1-.5-4.6H24v8.7h12.7c-.6 3.1-2.4 5.7-5 7.5l7.6 5.8C44.6 36.3 46.5 30.5 46.5 24z"/><path fill="#4A90E2" d="M10 29.9c-1.1-3.1-1.1-6.4 0-9.5L3 15c-3 5.7-3 12.1 0 17.8l7-2.9z"/><path fill="#FBBC05" d="M24 46.5c6.4 0 11.8-2.1 15.7-5.7l-7.6-5.8c-2.1 1.4-4.8 2.2-8.1 2.2-6.9 0-12.3-6.8-11.3-13.7l-7-5.4C6.9 41.1 14.7 46.5 24 46.5z"/></svg>
+                                <span>Google</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</Layout>

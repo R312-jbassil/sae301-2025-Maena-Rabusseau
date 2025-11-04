@@ -1,13 +1,18 @@
-@tailwind;
+@import "tailwindcss";
 
 @plugin "daisyui" {
     themes: light, sae;
 }
 
+
+
 @plugin "daisyui/theme" {
   name: "sae";
   default: true;
   prefersdark: false;
+
+  --font-family: "Arial", "Helvetica", sans-serif;
+    
   color-scheme: "light";
   --color-base-100: oklch(100% 0 0);
   --color-base-200: oklch(100% 0 0);
@@ -37,4 +42,16 @@
   --border: 1px;
   --depth: 1;
   --noise: 0;
+  
+}
+
+
+:root,
+[data-theme="sae"] {
+  font-family: var(--font-family);
+}
+
+
+[data-theme="sae"] .btn {
+  font-family: var(--font-family);
 }

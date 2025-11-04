@@ -1,0 +1,336 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Card from "../components/Card.astro";
+import Footer from "../components/Footer.astro";
+const title = "Personnaliser";
+---
+
+<Layout title={title}>
+        <Header/>
+
+        <main class="max-w-7xl mx-auto px-4 py-12">
+            <!-- bandeau supérieur -->
+            <div class="bg-(--color-accent) text-white text-sm py-2 px-6 rounded-md mb-8">
+                12 personnes regardent ce modèle
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Aperçu (gauche) -->
+                <section class="lg:col-span-7 bg-white rounded-lg p-10 flex flex-col items-start">
+                    <a href="#" class="text-sm text-gray-400 mb-6 flex items-center gap-2">← RETOUR</a>
+                    <p class="text-xs uppercase text-gray-400 tracking-widest mb-4">Personnalisation</p>
+                    <h1 class="text-5xl font-extrabold tracking-tight mb-10">CRÉEZ<br/>VOTRE PAIRE</h1>
+
+                    <div class="w-full flex justify-center">
+                        <div class="max-w-[520px] w-full p-8 bg-(--card-bg,#fff) rounded-2xl shadow-sm">
+                            <!-- image/preview - replace src if you want an inline SVG -->
+                            <img src="/src/assets/lunettes.svg" alt="Aperçu lunettes" class="w-full h-auto object-contain"/>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-gray-400 mt-8">APERÇU EN TEMPS RÉEL</p>
+
+                    <div class="mt-8">
+                        <button class="border border-gray-300 text-sm px-4 py-2 rounded-md">STOCK LIMITÉ : Plus que 4 en stock</button>
+                    </div>
+                </section>
+
+                <!-- Contrôles (droite) -->
+                <aside class="lg:col-span-5">
+                    <div class="space-y-10">
+                        <!-- 01. FORME -->
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-700">01. FORME</h3>
+                            <p class="text-xs text-gray-400 mb-4">Choisissez votre style de monture</p>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <label class="block cursor-pointer">
+                                    <input type="radio" name="forme" class="sr-only" aria-label="Classique" />
+                                    <div class="p-4 border rounded-md shadow-sm hover:shadow-md focus-within:ring-2 focus-within:ring-(--color-accent)">
+                                        <div class="h-6 bg-gray-200 rounded-sm mb-3"></div>
+                                        <div class="text-xs font-medium text-gray-700">CLASSIQUE</div>
+                                        <div class="text-xs text-gray-400">198€</div>
+                                    </div>
+                                </label>
+
+                                <label class="block cursor-pointer">
+                                    <input type="radio" name="forme" class="sr-only" aria-label="Moderne" />
+                                    <div class="p-4 border rounded-md shadow-sm hover:shadow-md focus-within:ring-2 focus-within:ring-(--color-accent)">
+                                        <div class="h-6 bg-gray-200 rounded-sm mb-3"></div>
+                                        <div class="text-xs font-medium text-gray-700">MODERNE</div>
+                                        <div class="text-xs text-gray-400">218€ <span class="inline-block ml-2 bg-(--color-accent) text-white text-[10px] px-2 py-0.5 rounded">BESTSELLER</span></div>
+                                    </div>
+                                </label>
+
+                                <label class="block cursor-pointer">
+                                    <input type="radio" name="forme" class="sr-only" aria-label="Rond" />
+                                    <div class="p-4 border rounded-md shadow-sm hover:shadow-md focus-within:ring-2 focus-within:ring-(--color-accent)">
+                                        <div class="h-6 bg-gray-200 rounded-sm mb-3"></div>
+                                        <div class="text-xs font-medium text-gray-700">ROND</div>
+                                        <div class="text-xs text-gray-400">206€</div>
+                                    </div>
+                                </label>
+
+                                <label class="block cursor-pointer">
+                                    <input type="radio" name="forme" class="sr-only" aria-label="Carré" />
+                                    <div class="p-4 border rounded-md shadow-sm hover:shadow-md focus-within:ring-2 focus-within:ring-(--color-accent)">
+                                        <div class="h-6 bg-gray-200 rounded-sm mb-3"></div>
+                                        <div class="text-xs font-medium text-gray-700">CARRÉ</div>
+                                        <div class="text-xs text-gray-400">198€</div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- 02. COULEUR -->
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-700">02. COULEUR</h3>
+                            <p class="text-xs text-gray-400 mb-4">Sélectionnez votre finition</p>
+
+                            <div class="grid grid-cols-4 gap-3">
+                                <button class="w-16 h-16 rounded shadow-sm border" aria-label="Noir">
+                                    <span class="block w-full h-full bg-black rounded"></span>
+                                </button>
+                                <button class="w-16 h-16 rounded shadow-sm border" aria-label="Marron">
+                                    <span class="block w-full h-full bg-[#8B4E2F] rounded"></span>
+                                </button>
+                                <button class="w-16 h-16 rounded shadow-sm border" aria-label="Transparent">
+                                    <span class="block w-full h-full bg-white border rounded"></span>
+                                </button>
+                                <button class="w-16 h-16 rounded shadow-sm border ring-2 ring-(--color-accent)" aria-label="Sauge">
+                                    <span class="block w-full h-full bg-[#9AAE98] rounded"></span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- CTA / résumé -->
+                                    <div class="pt-4 border-t">
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <div class="text-sm text-gray-500">Sélection</div>
+                                                <div class="text-lg font-semibold">Modèle Rond • Noir</div>
+                                            </div>
+                                            <div>
+                                                <div class="text-xl font-bold">206€</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-6 flex gap-3">
+                                            <button class="bg-(--color-accent) text-white px-6 py-3 rounded-md font-medium">Ajouter au panier</button>
+                                            <button class="border px-4 py-3 rounded-md">Enregistrer</button>
+                                        </div>
+                                    </div>
+
+                                    <!-- 03. VERRES -->
+                                    <div class="mt-12">
+                                        <h3 class="text-sm font-semibold text-gray-700">03. VERRES</h3>
+                                        <p class="text-xs text-gray-400 mb-4">Type de correction</p>
+
+                                        <div class="space-y-3">
+                                            <label class="block border rounded-md p-4">
+                                                <input type="radio" name="verres" class="sr-only" />
+                                                <div class="flex items-center justify-between">
+                                                    <div>
+                                                        <div class="text-sm font-medium">TRANSPARENT</div>
+                                                        <div class="text-xs text-gray-400">Verres standards</div>
+                                                    </div>
+                                                    <div class="text-sm text-gray-700">Inclus</div>
+                                                </div>
+                                            </label>
+
+                                            <label class="block border rounded-md p-4">
+                                                <input type="radio" name="verres" class="sr-only" />
+                                                <div class="flex items-center justify-between">
+                                                    <div>
+                                                        <div class="text-sm font-medium">ANTI-LUMIÈRE BLEUE</div>
+                                                        <div class="text-xs text-gray-400">Protection écrans</div>
+                                                    </div>
+                                                    <div class="text-sm text-gray-700">+40€</div>
+                                                </div>
+                                            </label>
+
+                                            <label class="block border rounded-md p-4">
+                                                <input type="radio" name="verres" class="sr-only" />
+                                                <div class="flex items-center justify-between">
+                                                    <div>
+                                                        <div class="text-sm font-medium">SOLAIRE</div>
+                                                        <div class="text-xs text-gray-400">Protection UV</div>
+                                                    </div>
+                                                    <div class="text-sm text-gray-700">+60€</div>
+                                                </div>
+                                            </label>
+
+                                            <label class="block border rounded-md p-4">
+                                                <input type="radio" name="verres" class="sr-only" />
+                                                <div class="flex items-center justify-between">
+                                                    <div>
+                                                        <div class="text-sm font-medium">TRANSITIONS</div>
+                                                        <div class="text-xs text-gray-400">S'adapte à la lumière</div>
+                                                    </div>
+                                                    <div class="text-sm text-gray-700">+80€</div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <!-- 04. MATÉRIAUX -->
+                                    <div class="mt-12">
+                                        <h3 class="text-sm font-semibold text-gray-700">04. MATÉRIAUX</h3>
+                                        <p class="text-xs text-gray-400 mb-6">Sélectionnez les matériaux pour chaque partie</p>
+
+                                        <div class="mb-6">
+                                            <div class="text-xs text-gray-500 mb-3">MONTURE</div>
+                                            <div class="grid grid-cols-2 gap-4">
+                                                <label class="block border rounded-md p-4">
+                                                    <input type="radio" name="monture" class="sr-only" />
+                                                    <div class="text-sm font-medium">ACÉTATE</div>
+                                                    <div class="text-xs text-gray-400">Léger et durable</div>
+                                                    <div class="text-xs mt-2">Inclus</div>
+                                                </label>
+                                                <label class="block border rounded-md p-4">
+                                                    <input type="radio" name="monture" class="sr-only" />
+                                                    <div class="text-sm font-medium">MÉTAL</div>
+                                                    <div class="text-xs text-gray-400">Élégant et fin</div>
+                                                    <div class="text-xs mt-2">+30€</div>
+                                                </label>
+                                                <label class="block border-2 border-black rounded-md p-4 relative">
+                                                    <input type="radio" name="monture" class="sr-only" />
+                                                    <div class="absolute -top-3 -right-3 bg-(--color-accent) text-white rounded-full w-6 h-6 flex items-center justify-center text-xs">✓</div>
+                                                    <div class="text-sm font-medium">TITANE</div>
+                                                    <div class="text-xs text-gray-400">Ultra-léger et résistant</div>
+                                                    <div class="text-xs mt-2">+80€</div>
+                                                </label>
+                                                <label class="block border rounded-md p-4">
+                                                    <input type="radio" name="monture" class="sr-only" />
+                                                    <div class="text-sm font-medium">BOIS</div>
+                                                    <div class="text-xs text-gray-400">Unique et écologique</div>
+                                                    <div class="text-xs mt-2">+120€</div>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <div class="text-xs text-gray-500 mb-3">BRANCHES</div>
+                                            <div class="grid grid-cols-2 gap-4">
+                                                <label class="block border rounded-md p-4">
+                                                    <input type="radio" name="branches" class="sr-only" />
+                                                    <div class="text-sm font-medium">ACÉTATE</div>
+                                                    <div class="text-xs text-gray-400">Léger et durable</div>
+                                                    <div class="text-xs mt-2">Inclus</div>
+                                                </label>
+                                                <label class="block border rounded-md p-4">
+                                                    <input type="radio" name="branches" class="sr-only" />
+                                                    <div class="text-sm font-medium">MÉTAL</div>
+                                                    <div class="text-xs text-gray-400">Élégant et fin</div>
+                                                    <div class="text-xs mt-2">+30€</div>
+                                                </label>
+                                                <label class="block border-2 border-black rounded-md p-4 relative">
+                                                    <input type="radio" name="branches" class="sr-only" />
+                                                    <div class="absolute -top-3 -right-3 bg-(--color-accent) text-white rounded-full w-6 h-6 flex items-center justify-center text-xs">✓</div>
+                                                    <div class="text-sm font-medium">TITANE</div>
+                                                    <div class="text-xs text-gray-400">Ultra-léger et résistant</div>
+                                                    <div class="text-xs mt-2">+80€</div>
+                                                </label>
+                                                <label class="block border rounded-md p-4">
+                                                    <input type="radio" name="branches" class="sr-only" />
+                                                    <div class="text-sm font-medium">BOIS</div>
+                                                    <div class="text-xs text-gray-400">Unique et écologique</div>
+                                                    <div class="text-xs mt-2">+120€</div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 05. DIMENSIONS -->
+                                    <div class="mt-12">
+                                        <h3 class="text-sm font-semibold text-gray-700">05. DIMENSIONS</h3>
+                                        <p class="text-xs text-gray-400 mb-6">Ajustez les mesures à votre convenance</p>
+
+                                        <div class="mb-6">
+                                            <div class="flex justify-between text-xs text-gray-500 mb-2">
+                                                <div>LARGEUR DU PONT</div>
+                                                <div class="text-sm text-gray-700">19mm</div>
+                                            </div>
+                                            <input type="range" min="14" max="24" value="19" class="w-full h-2 bg-gray-200 rounded-lg" />
+                                            <div class="flex justify-between text-xs text-gray-400 mt-2">
+                                                <div>14mm (Étroi t)</div>
+                                                <div>24mm (Large)</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-6">
+                                            <div class="flex justify-between text-xs text-gray-500 mb-2">
+                                                <div>TAILLE DES VERRES</div>
+                                                <div class="text-sm text-gray-700">48mm</div>
+                                            </div>
+                                            <input type="range" min="45" max="60" value="48" class="w-full h-2 bg-gray-200 rounded-lg" />
+                                            <div class="flex justify-between text-xs text-gray-400 mt-2">
+                                                <div>45mm (Petit)</div>
+                                                <div>60mm (Grand)</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-6 bg-gray-50 p-6 rounded">
+                                            <div class="text-sm text-gray-500 mb-4">MESURES FINALES</div>
+                                            <div class="grid grid-cols-3 text-center">
+                                                <div>
+                                                    <div class="text-xs text-gray-500">Pont</div>
+                                                    <div class="font-semibold">19mm</div>
+                                                </div>
+                                                <div>
+                                                    <div class="text-xs text-gray-500">Verres</div>
+                                                    <div class="font-semibold">48mm</div>
+                                                </div>
+                                                <div>
+                                                    <div class="text-xs text-gray-500">Largeur totale</div>
+                                                    <div class="font-semibold">115mm</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Récap total + options (large) -->
+                                    <div class="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                                        <div class="lg:col-span-2 bg-white p-6 rounded border">
+                                            <div class="flex justify-between text-sm text-gray-600 mb-4">
+                                                <div>
+                                                    <div>Monture</div>
+                                                    <div class="text-gray-500 text-xs">200</div>
+                                                </div>
+                                                <div class="text-lg font-bold">200€</div>
+                                            </div>
+
+                                            <div class="flex justify-between text-sm text-gray-600 mb-6">
+                                                <div>
+                                                    <div>Verres</div>
+                                                    <div class="text-gray-500 text-xs">80</div>
+                                                </div>
+                                                <div class="text-lg font-bold">80€</div>
+                                            </div>
+
+                                            <div class="border-t pt-6 flex items-center justify-between">
+                                                <div class="text-sm font-semibold">TOTAL</div>
+                                                <div class="text-2xl font-bold">280€</div>
+                                            </div>
+
+                                            <div class="mt-6">
+                                                <button class="w-full bg-(--color-accent) text-white py-3 text-xs tracking-widest rounded">AJOUTER AU PANIER</button>
+                                            </div>
+                                        </div>
+
+                                        <aside class="bg-white rounded border p-6">
+                                            <div class="text-sm font-semibold mb-3">OPTIONS SUPPLÉMENTAIRES</div>
+                                            <ul class="text-sm text-gray-600 space-y-2">
+                                                <li>Gravure personnalisée</li>
+                                                <li>Étui premium</li>
+                                                <li>Chiffon microfibre</li>
+                                            </ul>
+                                        </aside>
+                                    </div>
+                                </div>
+                            </aside>
+                        </div>
+                    </main>
+                    <Footer />
+</Layout>

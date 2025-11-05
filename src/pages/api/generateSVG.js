@@ -3,18 +3,17 @@ export const POST = async ({ request }) => {
     console.log(request);
 
 
-    // Récupération du token d'accès à partir des variables d'environnement
-    const ACCESS_TOKEN = import.meta.env.HF_TOKEN;
-    const BASE_URL = import.meta.env.HF_URL;
+    const ACCESS_TOKEN = import.meta.env.OPENAI_API_KEY || import.meta.env.HF_TOKEN || import.meta.env.OPENROUTER_API_KEY;
+    const BASE_URL = import.meta.env.OPENROUTER_BASE_URL || import.meta.env.HF_URL;
 
 
     // Extraction des message du corps de la requête
     const messages = await request.json();
 
-    // Initialisation du client OpenAI avec l'URL de base et le token d'API
+    // Initialisation du client OpenAI (ou OpenRouter-compatible) avec le token/API key
     // On utilise import.meta.env (Astro/Vite) plutôt que process.env pour la compatibilité
-    const apiKey = import.meta.env.OPENAI_API_KEY || import.meta.env.OPENROUTER_API_KEY || ACCESS_TOKEN;
-    const openrouterBase = import.meta.env.OPENROUTER_BASE_URL || BASE_URL || "https://api.openrouter.ai/v1";
+    const apiKey = ACCESS_TOKEN;
+    const openrouterBase = BASE_URL || "https://api.openrouter.ai/v1";
 
     // Essayer d'importer dynamiquement le package 'openai'. Si absent, on utilisera un stub.
     let client = null;
@@ -28,8 +27,8 @@ export const POST = async ({ request }) => {
                 JSON.stringify({
                     error: true,
                     message:
-                        "Aucune clé API trouvée. Ajoutez OPENAI_API_KEY (ou OPENROUTER_API_KEY / HF_TOKEN) dans votre fichier .env et redémarrez le serveur.",
-                    hint: "Vous pouvez créer .env à la racine (voir .env.example).",
+                        "Aucune clé API trouvée. Ajoutez OPENAI_API_KEY ou HF_TOKEN (ou OPENROUTER_API_KEY en alias) dans votre fichier .env et redémarrez le serveur.",
+                    hint: "Placez votre clé dans un fichier .env à la racine (voir .env.example) et ne la commitez pas.",
                 }),
                 { status: 400, headers: { "Content-Type": "application/json" } },
             );
@@ -63,7 +62,6 @@ export const POST = async ({ request }) => {
         }
     }
 
-    // Si aucun contenu généré (pas de client/clé ou erreur), renvoyer un SVG de démonstration
     if (!messageContent) {
         messageContent = `
 <svg xmlns="http://www.w3.org/2000/svg" width="480" height="240" viewBox="0 0 480 240">
@@ -77,7 +75,7 @@ export const POST = async ({ request }) => {
     <ellipse cx="150" cy="120" rx="60" ry="36" />
     <ellipse cx="330" cy="120" rx="60" ry="36" />
   </g>
-  <text x="24" y="220" font-size="12" fill="#6b7280">SVG de démonstration — installez le package 'openai' et définissez OPENAI_API_KEY pour la génération réelle.</text>
+    <text x="24" y="220" font-size="12" fill="#6b7280">SVG de démonstration — installez le package 'openai' et/ ou définissez OPENAI_API_KEY ou HF_TOKEN pour la génération réelle.</text>
 </svg>
         `;
     }

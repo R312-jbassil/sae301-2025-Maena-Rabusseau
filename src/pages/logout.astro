@@ -1,0 +1,60 @@
+---
+---
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Déconnexion</title>
+    </head>
+    <body>
+        <main class="max-w-xl mx-auto text-center mt-16 px-4">
+            <h1 class="text-3xl font-semibold mb-4">Déconnexion</h1>
+            <p id="status" class="text-gray-700 mb-6">Déconnexion en cours…</p>
+            <p>
+                <button id="homeBtn" class="hidden inline-block px-4 py-2 border border-gray-300 bg-gray-100 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    Retour à l'accueil
+                </button>
+            </p>
+        </main>
+
+        <script type="module">
+            // Simple logout: appelle l'API si présente, efface le storage et les cookies accessibles côté client,
+            // puis redirige vers la page d'accueil.
+            async function clearClientCookies() {
+                document.cookie.split(";").forEach(cookie => {
+                    const name = cookie.split("=")[0].trim();
+                    document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
+                });
+            }
+
+            async function performLogout() {
+                const statusEl = document.getElementById('status');
+                try {
+                    // Appel optionnel au backend pour invalider la session (si votre API existe)
+                    await fetch('/api/logout', { method: 'POST', credentials: 'include' }).catch(() => {});
+                } catch (e) {
+                    // ignore
+                }
+
+                try {
+                    localStorage.removeItem('authToken'); // exemple de clé d'auth
+                    sessionStorage.clear();
+                    await clearClientCookies();
+                } catch (e) {
+                    // ignore
+                }
+
+                statusEl.textContent = 'Vous êtes déconnecté.';
+                const btn = document.getElementById('homeBtn');
+                btn.style.display = 'inline-block';
+                btn.addEventListener('click', () => location.href = '/');
+
+                // Redirige automatiquement après un court délai
+                setTimeout(() => location.href = '/', 1200);
+            }
+
+            performLogout();
+        </script>
+    </body>
+</html>

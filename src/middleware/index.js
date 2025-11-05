@@ -18,9 +18,9 @@ export const onRequest = async (context, next) => {
         context.locals.user = null;
     } }
 
-  // Pour les routes API, on exige l'authentification sauf pour /api/login
-  if (context.url.pathname.startsWith('/api/')) {
-    if (!context.locals.user && context.url.pathname !== '/api/login' && context.url.pathname !== '/api/signup') {
+  // Pour les routes api2, on exige l'authentification sauf pour /api/login
+  if (context.url.pathname.startsWith('/api2/')) {
+    if (!context.locals.user && context.url.pathname !== '/api2/login' && context.url.pathname !== '/api2/signup') {
       // Si l'utilisateur n'est pas connecté, on retourne une erreur 401 (non autorisé)
       return new Response(JSON.stringify({ error: "Unauthorized" }), { status: 401 });
     }
@@ -32,7 +32,7 @@ export const onRequest = async (context, next) => {
     if (context.url.pathname !== '/login' && context.url.pathname !== '/' && context.url.pathname !== '/signup')
       return Response.redirect(new URL('/login', context.url), 303);
   }
-  if (context.url.pathname.startsWith('/api/')) {
+  if (context.url.pathname.startsWith('/api2/')) {
     return next();
   }
 

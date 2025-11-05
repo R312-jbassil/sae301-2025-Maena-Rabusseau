@@ -6,28 +6,29 @@ export const POST = async ({ request }) => {
     const ACCESS_TOKEN = import.meta.env.OPENAI_API_KEY || import.meta.env.HF_TOKEN || import.meta.env.OPENROUTER_API_KEY;
     const BASE_URL = import.meta.env.OPENROUTER_BASE_URL || import.meta.env.HF_URL;
 
-
+    console.log("ACCESS_TOKEN:", ACCESS_TOKEN);
     // Extraction des message du corps de la requête
     const messages = await request.json();
-
+    console.log(messages);
+    
     // Initialisation du client OpenAI (ou OpenRouter-compatible) avec le token/API key
     // On utilise import.meta.env (Astro/Vite) plutôt que process.env pour la compatibilité
     const apiKey = ACCESS_TOKEN;
-    const openrouterBase = BASE_URL || "https://api.openrouter.ai/v1";
+    const openrouterBase =  "https://api.openrouter.ai/v1";
 
     // Essayer d'importer dynamiquement le package 'openai'. Si absent, on utilisera un stub.
     let client = null;
     try {
         const OpenAI = (await import("openai")).default;
         if (OpenAI && apiKey) {
-            client = new OpenAI({ apiKey, baseURL: openrouterBase });
+            client = new OpenAI({ baseURL: openrouterBase, apiKey: apiKey });
         } else if (!apiKey) {
             // Renvoyer un message clair au client indiquant l'absence de clé API
             return new Response(
                 JSON.stringify({
                     error: true,
                     message:
-                        "Aucune clé API trouvée. Ajoutez OPENAI_API_KEY ou HF_TOKEN (ou OPENROUTER_API_KEY en alias) dans votre fichier .env et redémarrez le serveur.",
+                        "!Aucune clé API trouvée. Ajoutez OPENAI_API_KEY ou HF_TOKEN (ou OPENROUTER_API_KEY en alias) dans votre fichier .env et redémarrez le serveur.",
                     hint: "Placez votre clé dans un fichier .env à la racine (voir .env.example) et ne la commitez pas.",
                 }),
                 { status: 400, headers: { "Content-Type": "application/json" } },

@@ -74,7 +74,7 @@ const title = "Connexion";
         const formData = new FormData(form);
 
         // Envoi des informations au serveur via l'API /api/login
-        const res = await fetch("/api/login", {
+        const res = await fetch("/api2/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({

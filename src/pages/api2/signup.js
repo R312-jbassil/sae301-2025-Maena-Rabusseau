@@ -12,8 +12,7 @@ export const POST = async ({ request, cookies }) => {
         const PB_URL = import.meta.env.PB_URL || "http://127.0.0.1:8090";
         const pb = new PocketBase(PB_URL);
 
-        // Création de l'utilisateur dans la collection users
-        // pocketbase attend les champs : email, password, passwordConfirm (nom peut être 'name' ou 'nom')
+       
         const createData = {
             email,
             password,

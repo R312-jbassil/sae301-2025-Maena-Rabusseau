@@ -770,10 +770,10 @@ const title = "Personnaliser";
     (function () {
         async function generateSVG(prompt) {
             console.log("Generating SVG for prompt:", prompt);
-            const res = await fetch("/api/generateSVG", {
+            const res = await fetch("/api2/generateSVG", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ prompt }),
+                body: JSON.stringify(prompt ),
             });
             // essayer de parser le JSON quelle que soit la réponse
             let data = null;
@@ -825,8 +825,8 @@ const title = "Personnaliser";
                     alertEl.className = "hidden p-3 rounded text-sm";
                     alertEl.textContent = "";
                 }
-
-                const svgCode = await generateSVG(prompt);
+                promptList.push(prompt);
+                const svgCode = await generateSVG(promptList);
                 if (!svgCode) throw new Error("Aucun SVG retourné par l'API");
                 // afficher le SVG rendu et le code source
                 svgContainer.innerHTML = svgCode;
